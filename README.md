@@ -1,24 +1,36 @@
-# movie-app
+# Movie App
 
-## Project setup
-```
+
+This is a single page app built with [Vue.js](https://vuejs.org/) and the [Vue CLI](https://cli.vuejs.org/).
+
+## Local setup
+
+##### 1. Install dependencies
+
+```bash
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+##### 2. Create `.env` file
+
+Copy the provided `.env.example` to a new `.env` file and set any env variables as needed.
+
+```bash
+cp .env.example .env
 ```
+
+##### 3. Start development server
+
+```bash
 yarn serve
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## Tests
 
-### Lints and fixes files
-```
-yarn lint
-```
+There are number of [Cypress](https://www.cypress.io/) integration tests in the `tests/e2e/specs` directory.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+You can run these tests by running `yarn test:e2e` which will open the Cypress test runner.
+
+## Deployment
+
+The app is deployed as a static website on [Netlify](https://www.netlify.com/).
