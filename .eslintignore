@@ -1,0 +1,8 @@
+*.html
+*.css
+*.scss
+*.png
+*.svg
+*.gif
+!.eslintrc.js
+!.huskyrc.js
