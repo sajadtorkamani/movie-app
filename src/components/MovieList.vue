@@ -52,6 +52,7 @@ export default {
             scrollable: true,
             height: 'auto',
             name: 'movie-modal',
+            classes: 'movie-modal-container',
           }
         );
       });
@@ -88,10 +89,6 @@ export default {
 .not-found {
   p {
     margin-bottom: 10px;
-  }
-
-  img {
-    max-width: 210px;
   }
 }
 </style>

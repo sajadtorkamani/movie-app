@@ -13,6 +13,7 @@
           placeholder="Enter a title..."
           v-model="searchTerm"
           data-testid="search-input"
+          autofocus
         />
         <button
           type="submit"
@@ -112,7 +113,7 @@ h1 {
   margin-bottom: 15px;
 
   input {
-    width: 245px;
+    width: 220px;
     max-width: 100%;
   }
 }
@@ -122,8 +123,9 @@ button {
   padding: 8px 10px;
 }
 
-.vm--modal {
-  box-shadow: 0 0 8px 0 #ccc;
-  overflow-y: auto;
+// !important needed to override generated styles
+.movie-modal-container {
+  box-shadow: 0 0 8px 0 #ccc !important;
+  overflow-y: auto !important;
 }
 </style>
