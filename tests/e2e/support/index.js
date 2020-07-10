@@ -14,7 +14,13 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
+
+// Prevent benign error `ResizeObserver loop limit exceeded` from crashing test
+// (https://stackoverflow.com/a/50387233/2302835)
+Cypress.on('uncaught:exception', (err, runnable) => {
+  return false;
+});
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

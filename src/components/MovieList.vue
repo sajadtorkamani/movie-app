@@ -5,6 +5,7 @@
         v-for="(movie, index) in movies"
         :key="index"
         class="movie"
+        data-testid="movie-result"
         v-on:click="openMovieModal(movie)"
       >
         <img
