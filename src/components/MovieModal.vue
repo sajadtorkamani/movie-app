@@ -23,75 +23,79 @@
 </template>
 
 <script>
-  export default {
-    name: 'MovieModal',
+export default {
+  name: 'MovieModal',
 
-    data () {
-      return {
-        details: [
-          'Year',
-          'Rated',
-          'Released',
-          'Runtime',
-          'Genre',
-          'Director',
-          'Writer',
-          'Actors',
-          'Plot',
-          'Language',
-          'Country',
-          'Awards'
-        ]
-      };
-    },
+  data() {
+    return {
+      details: [
+        'Year',
+        'Rated',
+        'Released',
+        'Runtime',
+        'Genre',
+        'Director',
+        'Writer',
+        'Actors',
+        'Plot',
+        'Language',
+        'Country',
+        'Awards',
+      ],
+    };
+  },
 
-    props: {
-      movie: Object
-    }
-  };
+  props: {
+    movie: Object,
+  },
+};
 </script>
 
 <style scoped lang="scss">
-  .movie-modal {
-    background: black;
-    padding: 40px 25px;
-    position: relative;
-    min-height: 400px;
-  }
+.movie-modal {
+  background: black;
+  padding: 40px 25px;
+  position: relative;
+  min-height: 400px;
+}
 
-  .title {
-    font-size: 28px;
-    margin-bottom: 30px;
-    text-align: center;
-  }
+.title {
+  font-size: 28px;
+  margin-bottom: 30px;
+  text-align: center;
+}
 
-  .close-btn-container {
-    background: black;
-    font-size: 14px;
-    padding: 10px;
-    position: absolute;
-    top: 3px;
-    right: 0;
+.close-btn-container {
+  background: black;
+  font-size: 14px;
+  padding: 10px;
+  position: absolute;
+  top: 3px;
+  right: 3px;
 
-    span {
-      text-decoration: underline;
+  span {
+    text-decoration: underline;
+
+    &:hover {
+      cursor: pointer;
     }
   }
+}
 
-  table {
-    margin: 0 auto;
-    min-width: 250px;
-  }
+table {
+  margin: 0 auto;
+  min-width: 250px;
+}
 
-  th,
-  td {
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0;
-    text-align: left;
-  }
+th,
+td {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  text-align: left;
+}
 
-  th {
-    font-weight: 400;
-    padding-right: 20px;
-  }
+th {
+  font-weight: 400;
+  padding-right: 20px;
+}
 </style>
