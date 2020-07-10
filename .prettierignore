@@ -1,0 +1,5 @@
+package.json
+*.svg
+*.png
+*.jpg
+*.gif
