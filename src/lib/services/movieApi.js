@@ -13,7 +13,7 @@ movieApi.interceptors.request.use((config) => {
 
 class MovieService {
   /**
-   * Search for movies by title
+   * Search for movies by title.
    *
    * @param {String} title
    * @returns {Promise<{}>}
@@ -22,6 +22,16 @@ class MovieService {
     const res = await movieApi.get(`/?s=${title}`);
 
     return res.data.Search;
+  }
+
+  /**
+   * Fetch a movie by ID.
+   * @param {Number} id
+   */
+  async fetchMovieById(id) {
+    const res = await movieApi.get(`/?i=${id}`);
+
+    return res.data;
   }
 }
 

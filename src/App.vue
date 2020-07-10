@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import MovieList from './screens/MovieList';
+import MovieList from './components/MovieList';
 import movieService from './lib/services/movieApi';
 
 export default {
