@@ -10,6 +10,7 @@
     "format:fix": "prettier --write \"src/**/*\""
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
   },
@@ -23,6 +24,8 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-vue": "^6.2.2",
     "prettier": "^2.0.5",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.2",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
