@@ -1,17 +1,15 @@
 <template>
   <section class="movie-modal">
+    <div slot="top-right" class="close-btn-container">
+      <span v-on:click="$modal.hide('movie-modal')">X Close</span>
+    </div>
+
     <h2 class="title">{{ movie.Title }}</h2>
-    <!--    <img-->
-    <!--      :src="movie.Poster"-->
-    <!--      :alt="movie.Title"-->
-    <!--      :title="movie.Title"-->
-    <!--      class="poster"-->
-    <!--    />-->
 
     <table cellpadding="0" cellspacing="0">
       <thead>
         <tr v-for="(detail, index) in details" :key="index">
-          <th>{{ detail }}</th>
+          <th>{{ detail }}:</th>
           <td>{{ movie[detail] }}</td>
         </tr>
       </thead>
@@ -51,8 +49,8 @@ export default {
 <style scoped lang="scss">
 .movie-modal {
   background: black;
-  border: 2px solid white;
-  padding: 25px 15px;
+  padding: 40px 25px;
+  position: relative;
   min-height: 400px;
 }
 
@@ -62,6 +60,19 @@ export default {
   text-align: center;
 }
 
+.close-btn-container {
+  background: black;
+  font-size: 14px;
+  padding: 10px;
+  position: absolute;
+  top: 3px;
+  right: 0;
+
+  span {
+    text-decoration: underline;
+  }
+}
+
 table {
   margin: 0 auto;
   min-width: 250px;
@@ -69,17 +80,13 @@ table {
 
 th,
 td {
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #ccc;
   padding: 10px 0;
   text-align: left;
 }
 
 th {
-  border-right: 1px solid white;
-}
-
-
-td {
-  padding-left: 10px;
+  font-weight: 400;
+  padding-right: 20px;
 }
 </style>

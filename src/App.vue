@@ -25,13 +25,15 @@
       </form>
     </section>
 
-    <movie-list v-if="movies" :movies="movies" :term="submittedTerm" />
+    <p v-if="isLoading">Loading...</p>
+    <p v-else-if="error">{{ error }}</p>
+    <movie-list v-else-if="movies" :movies="movies" :term="submittedTerm" />
   </div>
 </template>
 
 <script>
 import MovieList from './components/MovieList';
-import movieService from './lib/services/movieApi';
+import movieService from './lib/services/movieService';
 
 export default {
   name: 'App',
@@ -44,18 +46,29 @@ export default {
       searchTerm: '',
       submittedTerm: '',
       movies: null,
+      isLoading: false,
+      error: null,
     };
   },
 
   methods: {
     search() {
-      movieService.searchByTitle(this.searchTerm).then((movies) => {
-        console.log('--------------------');
-        console.log({ movies });
-        console.log('--------------------');
-        this.movies = movies;
-        this.submittedTerm = this.searchTerm;
-      });
+      this.isLoading = true;
+
+      movieService
+        .searchByTitle(this.searchTerm)
+        .then((movies) => {
+          this.movies = movies;
+          this.submittedTerm = this.searchTerm;
+          this.error = null;
+        })
+        .catch((err) => {
+          this.error = err.message;
+          this.movies = null;
+        })
+        .finally(() => {
+          this.isLoading = false;
+        });
     },
   },
 };
@@ -71,14 +84,12 @@ export default {
 body {
   background: black;
   color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }
 
 .app {
-  border: 1px solid black;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin: 40px auto 30px;
+  margin: 35px auto 40px;
   max-width: 800px;
   padding-left: 15px;
   padding-right: 15px;
@@ -109,5 +120,10 @@ h1 {
 input[type='text'],
 button {
   padding: 8px 10px;
+}
+
+.vm--modal {
+  box-shadow: 0 0 8px 0 #ccc;
+  overflow-y: auto;
 }
 </style>

@@ -8,7 +8,7 @@
         v-on:click="openMovieModal(movie)"
       >
         <img
-          :src="movie.Poster"
+          :src="movie.Poster === 'N/A' ? posterPlaceholderUrl : movie.Poster"
           :alt="movie.Title"
           :title="movie.Title"
           class="poster"
@@ -18,14 +18,15 @@
     </div>
 
     <div v-else class="not-found">
-      <p>No movies found for "{{ term }}"</p>
+      <p>No movies found for "{{ term }}".</p>
     </div>
   </section>
 </template>
 
 <script>
+import movieService from '../lib/services/movieService';
+import posterPlaceholderUrl from '../assets/images/poster-placeholder.png';
 import MovieModal from './MovieModal';
-import movieService from '../lib/services/movieApi';
 
 export default {
   name: 'MovieList',
@@ -36,31 +37,29 @@ export default {
   },
 
   data() {
-    return {
-      movieBeingViewed: null,
-    };
+    return { posterPlaceholderUrl };
   },
 
   methods: {
     openMovieModal(movie) {
       movieService.fetchMovieById(movie.imdbID).then((movie) => {
-        this.$modal.show(MovieModal, { movie }, { height: 'auto' });
+        this.$modal.show(
+          MovieModal,
+          { movie },
+          {
+            adaptive: true,
+            scrollable: true,
+            height: 'auto',
+            name: 'movie-modal',
+          }
+        );
       });
-    },
-
-    hideMovieModal() {
-      this.$modal.hide(MovieModal);
     },
   },
 };
 </script>
 
 <style scoped lang="scss">
-.gift-list {
-  border: 1px solid #ccc;
-  padding: 15px;
-}
-
 .list {
   display: flex;
   flex-direction: column;
@@ -81,7 +80,7 @@ export default {
 
   &:hover {
     cursor: pointer;
-    transform: scale(1.01);
+    transform: scale(1.02);
   }
 }
 
